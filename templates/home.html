@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{#extended from base.html#}
+
+{% block content %}
+    <h1>Insert DNA to return Protein sequence</h1>
+    {#form to grab the user input#}
+    <form action="{{ url_for('index') }}" method="post">
+        <p><input type="text" name="sequence"></p>
+        <p><input type="submit"></p>
+    </form>
+
+
+    <p>{{ proteins }}</p>
+{% endblock %}
