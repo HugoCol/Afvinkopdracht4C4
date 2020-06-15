@@ -7,7 +7,7 @@
 # Als het een eiwit is geeft het meest waaarschijnlijke gen
 # waar het van afkomstig is.
 
-
+from Biopythoncomunication import validSequence,translate,blasting
 from flask import Flask,render_template,request
 
 app = Flask(__name__)
@@ -21,11 +21,20 @@ def index():
     input: dna sequence string from user input textbox
     :return: translated protein sequence
     '''
+    translation = ''
+    transcription = ''
     if request.method == "POST":
         seq = request.form.get("sequence", "")
+        definition = validSequence(seq)
+        if definition == 'dna':
+            transcription,translation = translate(seq)
+        elif definition == 'protein':
+            blasting(seq)
 
         return render_template('home.html', title='Home',
-                               proteins=protein)
+                               proteins=seq,
+                               transcription=transcription,
+                               translation=translation)
     else:
         return render_template('home.html', title='Home',
                                proteins='')
