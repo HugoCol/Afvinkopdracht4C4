@@ -13,4 +13,10 @@
     <p>entered sequence: <br>{{ proteins }}</p>
     <p>transcription:    <br>{{ transcription }}</p>
     <p>translation: <br> {{ translation }}</p>
+    {% if datalist != '' %}
+    <p>Blast results:</p>
+    {% endif %}
+{#    {% for i in datalist: %}#}
+     <p>{{ datalist }}</p>
+{#    {% endfor %}#}
 {% endblock %}

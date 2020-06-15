@@ -7,7 +7,7 @@
 # Als het een eiwit is geeft het meest waaarschijnlijke gen
 # waar het van afkomstig is.
 
-from Biopythoncomunication import validSequence,translate,blasting,read_XML
+from Biopythoncomunication import validSequence,translate,blasting
 from flask import Flask,render_template,request
 
 app = Flask(__name__)
@@ -29,12 +29,13 @@ def index():
         if definition == 'dna':
             transcription,translation = translate(seq)
         elif definition == 'protein':
-            blasting(seq)
+            datalist = blasting(seq)
 
         return render_template('home.html', title='Home',
                                proteins=seq,
                                transcription=transcription,
-                               translation=translation)
+                               translation=translation,
+                               datalist=datalist)
     else:
         return render_template('home.html', title='Home',
                                proteins='')
