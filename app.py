@@ -7,7 +7,7 @@
 # Als het een eiwit is geeft het meest waaarschijnlijke gen
 # waar het van afkomstig is.
 
-from Biopythoncomunication import validSequence,translate,blasting
+from Biopythoncomunication import validSequence,translate,blasting,read_XML
 from flask import Flask,render_template,request
 
 app = Flask(__name__)

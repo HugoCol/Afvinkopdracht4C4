@@ -48,7 +48,15 @@ def translate(dna_sequence):
 
 
 def blasting(translation):
-    closest_match = NCBIWWW.qblast("blastn","nr",translation)
+    closest_match = NCBIWWW.qblast("blastn","nr",translation,
+                                   format_type="XML", hitlist_size=1)
+    bast_data = open("first_result.xml","w")
+    blast_data.write(closest_match.read())
+    blast_data.close()
 
-    return closest_match
+def read_XML():
+    file = open('first_result,xml','r')
+    for line in file:
+        print(line)
+    return
 
